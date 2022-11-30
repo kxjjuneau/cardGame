@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DrawCards : MonoBehaviour
 {
-    public GameObject card1;
-    public GameObject card2;
+    public List<GameObject > playerDeck = new List<GameObject >();
     public GameObject playerArea;
     public GameObject cpuArea;
     void Start()
@@ -20,7 +19,9 @@ public class DrawCards : MonoBehaviour
 
     public void Draw()
     {
-        GameObject pcard1 = Instantiate(card1, new Vector3(0,0,0), Quaternion.identity);
+        // get random card from deck
+        int randomCard = Random.Range(0, playerDeck.Count);
+        GameObject pcard1 = Instantiate(playerDeck[randomCard], new Vector3(0,0,0), Quaternion.identity);
         pcard1.transform.SetParent(playerArea.transform, false);
         // GameObject ccard2 = Instantiate(card2, cpuArea.transform.position, Quaternion.identity);
         // card2.transform.SetParent(cpuArea.transform, false);
